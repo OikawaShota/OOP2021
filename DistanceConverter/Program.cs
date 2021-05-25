@@ -18,24 +18,18 @@ namespace DistanceConverter {
 
         private static void PrintMeterToFeetList(int start,int stop) {
             for(int meter = start; meter <= stop; meter++) {
-                double feet = MeterToFeet(meter);
-                Console.WriteLine("{0}m={1:0.0000}ft", meter, feet);
+                FeetConverter con = new FeetConverter();
+                double f = con.FromMeter(meter);
+                Console.WriteLine("{0}m={1:0.0000}ft", meter,f);
             }
         }
 
         private static void PrintFeetToMeterList(int start,int stop) {
             for(int feet = start; feet <= stop; feet++) {
-                double meter = feet * FeetToMeter(feet);
-                Console.WriteLine("{0} ft={1:0.0000}m", feet, meter);
+                FeetConverter con = new FeetConverter();
+                double m = con.ToMeter(feet);
+                Console.WriteLine("{0} ft={1:0.0000}m", feet,m);
             }
-        }
-
-        static double MeterToFeet(int meter) {
-            return meter / 0.3048;
-        }
-
-        static double FeetToMeter(int feet) {
-            return feet * 0.3048;
         }
     }
 }
