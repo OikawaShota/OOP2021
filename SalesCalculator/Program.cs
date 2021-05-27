@@ -9,7 +9,7 @@ namespace SalesCalculator {
     class Program {
         
         static void Main(string[] args) {
-            
+            List<Sale> sales = ReadSales("sales.csv");
         }
         //売上データを読み込み、Saleオブジェクトのリストを返す
         static List<Sale> ReadSales(string filePath) {
