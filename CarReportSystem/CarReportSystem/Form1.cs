@@ -154,16 +154,21 @@ namespace CarReportSystem {
 
         private void btSave_Click(object sender, EventArgs e) {
             if (sfdFileSave.ShowDialog() == DialogResult.OK) {
+                try { 
                 var bf = new BinaryFormatter();
                 //バイナリ形式でシリアル化
                 using (FileStream fs = File.Open(sfdFileSave.FileName, FileMode.Create)) {
                     bf.Serialize(fs, listCarReport);
+                }
+                }catch(Exception ex) {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
 
         private void btOpen_Click(object sender, EventArgs e) {
             if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
+                try { 
                 var bf = new BinaryFormatter();
                 //バイナリ形式で逆シリアル化
                 using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open,FileAccess.Read)) {
@@ -172,9 +177,20 @@ namespace CarReportSystem {
                     dgvRegistData.DataSource = null;
                     dgvRegistData.DataSource = listCarReport;
                 }
-                //読み込んだデータを各コンボボックスに登録する
-                
             }
+                catch(Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+                //読み込んだデータを各コンボボックスに登録する
+               for(int i=0;i<dgvRegistData.RowCount;i++){ 
+                setCbAuthor(dgvRegistData.Rows[i].Cells[1].Value.ToString());
+                setCbCarName(dgvRegistData.Rows[i].Cells[3].Value.ToString());
+               }
+            }
+        }
+        private void fmMain_Load(object sender,EventArgs e) {
+            dgvRegistData.Columns[5].Visible=false;
+           
         }
     }
 }
