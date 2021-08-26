@@ -20,14 +20,9 @@ namespace Sample0823
         private void button1_Click(object sender, EventArgs e)
         {
             int val = int.Parse(Value.Text);
-            int a = 1;
-            int re = 0;
-            for (int i = 0; i < (int.Parse(Jyou.Text)); i++)
-            {
-                a = a * val;
-                re = re + a;//未完成
-            }
-            Result.Text = re.ToString();
+            int jyo = int.Parse(Jyou.Text);
+
+            Result.Text = (Math.Pow((double)val, (double)jyo)).ToString();
         }
     }
 }
