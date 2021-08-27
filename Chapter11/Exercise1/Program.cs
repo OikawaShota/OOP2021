@@ -47,7 +47,11 @@ namespace Exercise1
 
         private static void Exercese1_3(string file)
         {
-
+            var xdoc = XDocument.Load(file);
+            var xsports = xdoc.Root.Elements().Max(x => (string)x.Element("teammembers"));
+            foreach (var ballsport in xsports)
+            {
+            }
         }
     }
 }
