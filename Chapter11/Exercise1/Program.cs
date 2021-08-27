@@ -36,12 +36,12 @@ namespace Exercise1
         private static void Exercese1_2(string file)
         {
             var xdoc = XDocument.Load(file);
-            var xsports = xdoc.Root.Elements().OrderBy(x => (DateTime)(x.Element("firstplayed")));
+            var xsports = xdoc.Root.Elements().OrderBy(x =>(string)x.Element("firstplayed"));
             foreach (var ballsport in xsports)
             {
-                var first = (DateTime)ballsport.Element("firstplayed");
+                XElement first = ballsport.Element("firstplayed");
                 XAttribute name = ballsport.Element("name").Attribute("kanji");
-                Console.WriteLine("{0} {1}",first.ToShortDateString(), name.Value);
+                Console.WriteLine("{0} {1}",first.Value, name.Value);
             }
         }
 
