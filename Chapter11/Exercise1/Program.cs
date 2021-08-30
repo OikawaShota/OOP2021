@@ -25,7 +25,7 @@ namespace Exercise1
         private static void Exercese1_1(string file)
         {
             var xdoc = XDocument.Load(file);
-            foreach(var ballsport in xdoc.Root.Elements())
+            foreach (var ballsport in xdoc.Root.Elements())
             {
                 XElement name = ballsport.Element("name");
                 XElement member = ballsport.Element("teammembers");
@@ -36,22 +36,27 @@ namespace Exercise1
         private static void Exercese1_2(string file)
         {
             var xdoc = XDocument.Load(file);
-            var xsports = xdoc.Root.Elements().OrderBy(x =>(string)x.Element("firstplayed"));
+            var xsports = xdoc.Root.Elements().OrderBy(x => (string)x.Element("firstplayed"));
             foreach (var ballsport in xsports)
             {
                 XElement first = ballsport.Element("firstplayed");
                 XAttribute name = ballsport.Element("name").Attribute("kanji");
-                Console.WriteLine("{0} {1}",first.Value, name.Value);
+                Console.WriteLine("{0} {1}", first.Value, name.Value);
             }
         }
 
         private static void Exercese1_3(string file)
         {
             var xdoc = XDocument.Load(file);
-            var xsports = xdoc.Root.Elements().Max(x => (string)x.Element("teammembers"));
-            foreach (var ballsport in xsports)
-            {
-            }
-        }
+            var xsports = xdoc.Root.Elements()
+                                    .Select(x => new
+                                    {
+                                        Name = x.Element("name").Value,
+                                        Teammembers = x.Element("teammembers").Value
+                                    })
+                                     .OrderByDescending(x => int.Parse(x.Teammembers)).First();
+            Console.WriteLine("{0}", xsports.Name);
+
+        } 
     }
 }
