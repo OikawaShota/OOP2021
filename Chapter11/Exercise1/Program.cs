@@ -23,9 +23,13 @@ namespace Exercise1
 
             Exercise1_4(file);
             Console.WriteLine("--------");
+
+            Exercise2("11_2.xml");
+            Console.WriteLine("--------");
         }
 
         
+
         private static void Exercise1_1(string file)
         {
             var xdoc = XDocument.Load(file);
@@ -82,6 +86,25 @@ namespace Exercise1
                 Console.WriteLine("種目{0} {1}人", name.Value, member.Value);
             }
                 
+        }
+        private static void Exercise2(string file)
+        {
+            var xdoc = XDocument.Load(file);
+            var newfile = "11_2変換後.xml";
+            var elm = xdoc.Root.Elements();
+            elm.Remove();
+            var element = new XElement("difficultkanji",
+                                    new XElement("word", new XAttribute("kanji", "鬼灯")
+                                                        , new XAttribute("yomi", "ほおずき")),
+                                    new XElement("word", new XAttribute("kanji", "暖簾")
+                                                        , new XAttribute("yomi", "のれん")),
+                                    new XElement("word", new XAttribute("kanji", "杜撰")
+                                                        , new XAttribute("yomi", "ずさん")),
+                                    new XElement("word", new XAttribute("kanji", "坩堝")
+                                                        , new XAttribute("yomi", "るつぼ"))
+                                    );
+            xdoc.Add(element);
+            xdoc.Save(newfile);
         }
 
     }
