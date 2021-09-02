@@ -87,6 +87,7 @@ namespace Exercise1
             }
                 
         }
+
         private static void Exercise2(string file)
         {
             var xdoc = XDocument.Load(file);
