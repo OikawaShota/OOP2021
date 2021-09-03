@@ -23,7 +23,25 @@ namespace Section04
             //DownloadString();
             //DownloadFileAsync();
             //OpenReadSample();
-            var results = GetWeatherReportFromYahoo(4210);
+            int[] city = new int[4] { 4210, 4220, 4110, 4010 };
+            Console.WriteLine("地域を選択\n" +
+                              "1:前橋\n" +
+                              "2:みなかみ\n" +
+                              "3:宇都宮\n" +
+                              "4:水戸\n" +
+                              "9:その他");
+            int i=int.Parse(Console.ReadLine());
+            int code = 0;
+            if (i == 9)
+            {
+                Console.WriteLine("コードを入力してください");
+                code = int.Parse(Console.ReadLine());
+            }
+            else
+            {
+                code = city[i - 1];
+            }
+            var results = GetWeatherReportFromYahoo(code);
             foreach(var s in results)
             {
                 Console.WriteLine(s);
