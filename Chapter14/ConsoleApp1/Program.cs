@@ -23,6 +23,7 @@ namespace Section04
             //DownloadString();
             //DownloadFileAsync();
             //OpenReadSample();
+            //演習1
             int[] city = new int[4] { 4210, 4220, 4110, 4010 };
             Console.WriteLine("地域を選択\n" +
                               "1:前橋\n" +
