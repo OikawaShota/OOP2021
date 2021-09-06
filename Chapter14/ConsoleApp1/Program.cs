@@ -12,6 +12,13 @@ namespace Section04
 {
     class Program
     {
+        //Dictionary<string, int> AreaDic = new Dictionary<string, int>()
+        //{
+        //    {"前橋",4210 },
+        //    {"水上",4220 },
+        //    {"宇都宮", 4110 },
+        //    {"水戸",4010 }
+        //};
         static void Main(string[] args)
         {
             new Program();
