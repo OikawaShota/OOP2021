@@ -29,9 +29,7 @@ namespace RssReader
             using (var wc = new WebClient())
             {
                 wc.Headers.Add("Content-type", "charset=UTF-8");
-                var uriString = string.Format(
-                    @url);
-                var urll = new Uri(uriString);
+                var urll = new Uri(url);
                 var stream = wc.OpenRead(urll);
 
                 XDocument xdoc = XDocument.Load(stream);
@@ -45,7 +43,21 @@ namespace RssReader
 
         private void lbTitles_Click(object sender, EventArgs e)
         {
-
+            using (var wc = new WebClient())
+            {
+                wc.Headers.Add("Content-type", "charset=UTF-8");
+                var urll = new Uri(tbUrl.Text);
+                var stream = wc.OpenRead(urll);
+                XDocument xdoc = XDocument.Load(stream);
+                var nodes = xdoc.Root.Elements();
+                //foreach (var node in nodes)
+                //{
+                //    if ()
+                //    {
+                //        wbBrowser.Navigate((string)node);
+                //    }
+                //}
+            }
         }
     }
 }
