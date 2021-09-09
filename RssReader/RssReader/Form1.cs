@@ -12,11 +12,14 @@ using System.Xml.Linq;
 
 namespace RssReader
 {
+
     public partial class Form1 : Form
     {
+        List<string> link = new List<string>();
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void btRead_Click(object sender, EventArgs e)
@@ -31,33 +34,24 @@ namespace RssReader
                 wc.Headers.Add("Content-type", "charset=UTF-8");
                 var urll = new Uri(url);
                 var stream = wc.OpenRead(urll);
-
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("title");
-                foreach (var node in nodes)
+                var titles = xdoc.Root.Descendants("title");
+                var links = xdoc.Root.Descendants("link");
+                
+                foreach (var node in titles)
                 {
                     lbTitles.Items.Add(node.Value);
+                }
+                foreach(var lin in links)
+                {
+                    link.Add(lin.Value);
                 }
             }
         }
 
         private void lbTitles_Click(object sender, EventArgs e)
         {
-            using (var wc = new WebClient())
-            {
-                wc.Headers.Add("Content-type", "charset=UTF-8");
-                var urll = new Uri(tbUrl.Text);
-                var stream = wc.OpenRead(urll);
-                XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Elements();
-                //foreach (var node in nodes)
-                //{
-                //    if ()
-                //    {
-                //        wbBrowser.Navigate((string)node);
-                //    }
-                //}
-            }
+            wbBrowser.Navigate(link[lbTitles.SelectedIndex]);
         }
     }
 }
