@@ -34,6 +34,10 @@ namespace RssReader
             this.lbTitles = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
             this.btRead = new System.Windows.Forms.Button();
+            this.lb2 = new System.Windows.Forms.Label();
+            this.tbDate = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +62,7 @@ namespace RssReader
             // 
             this.lbTitles.FormattingEnabled = true;
             this.lbTitles.ItemHeight = 15;
-            this.lbTitles.Location = new System.Drawing.Point(17, 58);
+            this.lbTitles.Location = new System.Drawing.Point(16, 152);
             this.lbTitles.Name = "lbTitles";
             this.lbTitles.Size = new System.Drawing.Size(258, 319);
             this.lbTitles.TabIndex = 2;
@@ -66,11 +70,11 @@ namespace RssReader
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(281, 58);
+            this.wbBrowser.Location = new System.Drawing.Point(281, 152);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(1137, 595);
+            this.wbBrowser.Size = new System.Drawing.Size(1137, 501);
             this.wbBrowser.TabIndex = 3;
             // 
             // btRead
@@ -83,11 +87,54 @@ namespace RssReader
             this.btRead.UseVisualStyleBackColor = true;
             this.btRead.Click += new System.EventHandler(this.btRead_Click);
             // 
+            // lb2
+            // 
+            this.lb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lb2.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lb2.Location = new System.Drawing.Point(391, 58);
+            this.lb2.Name = "lb2";
+            this.lb2.Size = new System.Drawing.Size(1027, 91);
+            this.lb2.TabIndex = 5;
+            // 
+            // tbDate
+            // 
+            this.tbDate.Font = new System.Drawing.Font("MS UI Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbDate.Location = new System.Drawing.Point(56, 85);
+            this.tbDate.Name = "tbDate";
+            this.tbDate.Size = new System.Drawing.Size(297, 30);
+            this.tbDate.TabIndex = 6;
+            this.tbDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(151, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 24);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "更新日時";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(56, 486);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 86);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "web表示";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1430, 665);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbDate);
+            this.Controls.Add(this.lb2);
             this.Controls.Add(this.btRead);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbTitles);
@@ -107,6 +154,10 @@ namespace RssReader
         private System.Windows.Forms.ListBox lbTitles;
         private System.Windows.Forms.WebBrowser wbBrowser;
         private System.Windows.Forms.Button btRead;
+        private System.Windows.Forms.Label lb2;
+        private System.Windows.Forms.TextBox tbDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

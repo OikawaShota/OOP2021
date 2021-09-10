@@ -16,6 +16,8 @@ namespace RssReader
     public partial class Form1 : Form
     {
         List<string> link = new List<string>();
+        List<string> des = new List<string>();
+        List<DateTime> day = new List<DateTime>();
         public Form1()
         {
             InitializeComponent();
@@ -37,6 +39,8 @@ namespace RssReader
                 XDocument xdoc = XDocument.Load(stream);
                 var titles = xdoc.Root.Descendants("title");
                 var links = xdoc.Root.Descendants("link");
+                var desc = xdoc.Root.Descendants("description");
+                var days = xdoc.Root.Descendants("pubDate");
                 
                 foreach (var node in titles)
                 {
@@ -46,10 +50,25 @@ namespace RssReader
                 {
                     link.Add(lin.Value);
                 }
+                foreach (var de in desc)
+                {
+                    des.Add(de.Value);
+                }
+                foreach(var da in days)
+                {
+                    day.Add(DateTime.Parse((string)da));
+                }
+                
             }
         }
 
         private void lbTitles_Click(object sender, EventArgs e)
+        {
+            lb2.Text = des[lbTitles.SelectedIndex];
+            tbDate.Text = day[lbTitles.SelectedIndex].ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             wbBrowser.Navigate(link[lbTitles.SelectedIndex]);
         }
