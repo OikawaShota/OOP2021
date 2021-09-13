@@ -72,5 +72,15 @@ namespace RssReader
         {
             wbBrowser.Navigate(link[lbTitles.SelectedIndex]);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            wbBrowser.GoBack();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            wbBrowser.GoForward();
+        }
     }
 }
