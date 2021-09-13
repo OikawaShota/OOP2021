@@ -68,19 +68,12 @@ namespace RssReader
             tbDate.Text = day[lbTitles.SelectedIndex].ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btWebShow_Click(object sender, EventArgs e)
         {
-            wbBrowser.Navigate(link[lbTitles.SelectedIndex]);
-        }
+            Form2 f2 = new Form2(link[lbTitles.SelectedIndex]);
+            
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            wbBrowser.GoBack();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            wbBrowser.GoForward();
+            f2.Show();
         }
     }
 }
