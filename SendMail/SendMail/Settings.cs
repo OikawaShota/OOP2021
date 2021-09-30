@@ -8,11 +8,27 @@ namespace SendMail
 {
     public class Settings
     {
+        private static Settings instance = null;
+
         public int Port { get; set; }       //ポート番号
         public string Host { get; set; }    //ホスト名
         public string MailAddr { get; set; }//メールアドレス
         public string Pass { get; set; }    //パスワード
         public bool Ssl { get; set; }       //SSL
+        public string Sender { get; set; }
+
+        //コンストラクタ
+        private Settings(){}
+
+        //インスタンスの取得
+        public static Settings getInstane()
+        {
+            if (instance == null)
+            {
+                instance = new Settings();
+            }
+            return instance;
+        }
 
         //初期値
         public string sHost()
@@ -27,12 +43,17 @@ namespace SendMail
 
         public string sMailAddr()
         {
-            return "OjsInfosys01@gmail.com";
+            return @"OjsInfosys01@gmail.com";
         }
 
         public string sPass()
         {
-            return "OjsInfosys2019";
+            return "Infosys2021";
+        }
+
+        public string sSender()
+        {
+            return @"OjsInfosys01@gmail.com";
         }
     }
 }

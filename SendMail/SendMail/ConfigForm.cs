@@ -12,43 +12,46 @@ namespace SendMail
 {
     public partial class ConfigForm : Form
     {
-        Settings s = new Settings();
 
         public ConfigForm()
         {
             InitializeComponent();
         }
-
+        private Settings st = Settings.getInstane();
         private void btDefault_Click(object sender, EventArgs e)
         {
-            tbHost.Text     = s.sHost();
-            tbUserName.Text = s.sMailAddr();
-            tbPort.Text     = s.sPort();
-            tbPassword.Text = s.sPass();
+            tbHost.Text     = st.sHost();
+            tbUserName.Text = st.sMailAddr();
+            tbPort.Text     = st.sPort();
+            tbPassword.Text = st.sPass();
+            tbSender.Text   = st.sSender();
+            cbSsl.Checked   = true;
         }
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            s.Host     = tbHost.Text;
-            s.MailAddr = tbUserName.Text;
-            s.Pass     = tbPassword.Text;
-            s.Port     = int.Parse(tbPort.Text);
-            s.Ssl      = cbSsl.Checked;
+            st.Host     = tbHost.Text;
+            st.MailAddr = tbUserName.Text;
+            st.Pass     = tbPassword.Text;
+            st.Port     = int.Parse(tbPort.Text);
+            st.Ssl      = cbSsl.Checked;
+            st.Sender   = tbSender.Text;
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            s.Host = tbHost.Text;
-            s.MailAddr = tbUserName.Text;
-            s.Pass = tbPassword.Text;
-            s.Port = int.Parse(tbPort.Text);
-            s.Ssl = cbSsl.Checked;
-            Close();
+            st.Host     = tbHost.Text;
+            st.MailAddr = tbUserName.Text;
+            st.Pass     = tbPassword.Text;
+            st.Port     = int.Parse(tbPort.Text);
+            st.Ssl      = cbSsl.Checked;
+            st.Sender   = tbSender.Text;
+            this.Close();
         }
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }

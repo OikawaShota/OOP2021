@@ -18,7 +18,10 @@ namespace SendMail
         {
             InitializeComponent();
         }
-        Settings st = new Settings();
+        //設定画面
+        private ConfigForm cf=new ConfigForm();
+        //設定情報
+        private Settings st = Settings.getInstane();
         private void btSend_Click(object sender, EventArgs e)
         {
             try
@@ -26,7 +29,7 @@ namespace SendMail
                 // メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
-                mailMessage.From = new MailAddress("ojsinfosys01@gmail.com");
+                mailMessage.From = new MailAddress(st.Sender);
                 //宛先（To）
                 mailMessage.To.Add(tbTo.Text);
                 mailMessage.CC.Add(tbCc.Text);
@@ -50,7 +53,6 @@ namespace SendMail
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }

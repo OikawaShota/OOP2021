@@ -98,6 +98,7 @@ namespace SendMail
             // 
             this.tbPassword.Location = new System.Drawing.Point(416, 68);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(211, 19);
             this.tbPassword.TabIndex = 1;
             // 
@@ -163,7 +164,7 @@ namespace SendMail
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 49);
+            this.label5.Location = new System.Drawing.Point(36, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 0;
@@ -240,7 +241,6 @@ namespace SendMail
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbHost;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbSender;
@@ -249,5 +249,6 @@ namespace SendMail
         private System.Windows.Forms.Button btOk;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btApply;
+        private System.Windows.Forms.TextBox tbHost;
     }
 }
