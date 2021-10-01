@@ -80,7 +80,7 @@ namespace SendMail
             // 
             this.tbTo.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbTo.Location = new System.Drawing.Point(112, 24);
-            this.tbTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTo.Margin = new System.Windows.Forms.Padding(2);
             this.tbTo.Name = "tbTo";
             this.tbTo.Size = new System.Drawing.Size(388, 31);
             this.tbTo.TabIndex = 1;
@@ -89,7 +89,7 @@ namespace SendMail
             // 
             this.tbTitle.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbTitle.Location = new System.Drawing.Point(112, 152);
-            this.tbTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTitle.Margin = new System.Windows.Forms.Padding(2);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(388, 31);
             this.tbTitle.TabIndex = 1;
@@ -98,7 +98,7 @@ namespace SendMail
             // 
             this.tbMessage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbMessage.Location = new System.Drawing.Point(112, 197);
-            this.tbMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMessage.Margin = new System.Windows.Forms.Padding(2);
             this.tbMessage.Multiline = true;
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.Size = new System.Drawing.Size(388, 279);
@@ -108,7 +108,7 @@ namespace SendMail
             // 
             this.btSend.Font = new System.Drawing.Font("MS UI Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btSend.Location = new System.Drawing.Point(408, 480);
-            this.btSend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btSend.Margin = new System.Windows.Forms.Padding(2);
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(90, 45);
             this.btSend.TabIndex = 2;
@@ -184,9 +184,10 @@ namespace SendMail
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "メール送信アプリ";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

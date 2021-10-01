@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SendMail
 {
@@ -47,6 +49,29 @@ namespace SendMail
             st.Ssl      = cbSsl.Checked;
             st.Sender   = tbSender.Text;
             this.Close();
+            var set = new Settings
+            {
+                Host = tbHost.Text,
+                MailAddr = tbUserName.Text,
+                Pass = tbPassword.Text,
+                Port = int.Parse(tbPort.Text),
+                Sender = tbSender.Text,
+                Ssl = cbSsl.Checked
+            };
+            var settings = new XmlWriterSettings
+            {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = " ",
+            };
+
+            using (XmlWriter writer = XmlWriter.Create("Setting.xml", settings)){
+                var serializer = new DataContractSerializer(set.GetType());
+                serializer.WriteObject(writer, set);
+            }
+
+
+
         }
 
         private void btCancel_Click(object sender, EventArgs e)
