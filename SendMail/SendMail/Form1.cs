@@ -19,7 +19,7 @@ namespace SendMail
             InitializeComponent();
         }
         //設定画面
-        private ConfigForm cf=new ConfigForm();
+        private ConfigForm cf = new ConfigForm();
         //設定情報
         private Settings st = Settings.getInstane();
         private void btSend_Click(object sender, EventArgs e)
@@ -32,8 +32,14 @@ namespace SendMail
                 mailMessage.From = new MailAddress(st.Sender);
                 //宛先（To）
                 mailMessage.To.Add(tbTo.Text);
-                mailMessage.CC.Add(tbCc.Text);
-                mailMessage.Bcc.Add(tbBcc.Text);
+                if (tbCc.Text != "")
+                {
+                    mailMessage.CC.Add(tbCc.Text);
+                }
+                if (tbBcc.Text != "")
+                {
+                    mailMessage.Bcc.Add(tbBcc.Text);
+                }
                 //件名（タイトル）
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -47,9 +53,9 @@ namespace SendMail
                 smtpClient.Host = st.Host;
                 smtpClient.Port = st.Port;
                 smtpClient.EnableSsl = st.Ssl;
-                smtpClient.Send(mailMessage);
-
-                MessageBox.Show("送信完了");
+                smtpClient.SendCompleted += SendComp;
+                smtpClient.SendAsync (mailMessage,null);
+                
             }
             catch (Exception ex)
             {
@@ -61,5 +67,11 @@ namespace SendMail
         {
             new ConfigForm().ShowDialog();
         }
+
+        private void SendComp(object sender, AsyncCompletedEventArgs e)
+        {
+            MessageBox.Show("送信完了");
+        }
     }
+
 }
