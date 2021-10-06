@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace SendMail
 {
@@ -57,7 +50,7 @@ namespace SendMail
                 smtpClient.EnableSsl = st.Ssl;
                 smtpClient.SendCompleted += SendComp;
                 string userState = "SendMail";
-                smtpClient.SendAsync (mailMessage,userState);
+                smtpClient.SendAsync (mailMessage,userState);                          
                 
             }
             catch (Exception ex)
@@ -81,21 +74,11 @@ namespace SendMail
             {
                 MessageBox.Show("送信完了");
             }
-            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-             XElement xset = XElement.Load(@"C:\Users\infosys\source\repos\OikawaShota\OOP2021\SendMail\SendMail\Setting.xml");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("XMLファイルが見つかりませんでした。\n" +
-                                "設定画面を起動します。");
-                new ConfigForm().ShowDialog();
-            }
+            
 
         }
     }

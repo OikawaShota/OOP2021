@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -32,32 +25,32 @@ namespace SendMail
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            st.Host     = tbHost.Text;
-            st.MailAddr = tbUserName.Text;
-            st.Pass     = tbPassword.Text;
-            st.Port     = int.Parse(tbPort.Text);
-            st.Ssl      = cbSsl.Checked;
-            st.Sender   = tbSender.Text;
+            SettingRegist();
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            st.Host     = tbHost.Text;
-            st.MailAddr = tbUserName.Text;
-            st.Pass     = tbPassword.Text;
-            st.Port     = int.Parse(tbPort.Text);
-            st.Ssl      = cbSsl.Checked;
-            st.Sender   = tbSender.Text;
+            SettingRegist();
             this.Close();
-            var set = new Settings
-            {
-                Host = tbHost.Text,
-                MailAddr = tbUserName.Text,
-                Pass = tbPassword.Text,
-                Port = int.Parse(tbPort.Text),
-                Sender = tbSender.Text,
-                Ssl = cbSsl.Checked
-            };
+        }
+
+        private void SettingRegist()
+        {
+            st.Host = tbHost.Text;
+            st.MailAddr = tbUserName.Text;
+            st.Pass = tbPassword.Text;
+            st.Port = int.Parse(tbPort.Text);
+            st.Ssl = cbSsl.Checked;
+            st.Sender = tbSender.Text;
+
+            var set = Settings.getInstane();
+            set.Host = tbHost.Text;
+            set.MailAddr = tbUserName.Text;
+            set.Pass = tbPassword.Text;
+            set.Port = int.Parse(tbPort.Text);
+            set.Sender = tbSender.Text;
+            set.Ssl = cbSsl.Checked;
+
             var settings = new XmlWriterSettings
             {
                 Encoding = new System.Text.UTF8Encoding(false),
@@ -65,15 +58,13 @@ namespace SendMail
                 IndentChars = " ",
             };
 
-            using (XmlWriter writer = XmlWriter.Create("Setting.xml", settings)){
+            using (XmlWriter writer = XmlWriter.Create("Setting.xml", settings))
+            {
                 var serializer = new DataContractSerializer(set.GetType());
                 serializer.WriteObject(writer, set);
             }
-
-
-
+            MessageBox.Show("保存完了");
         }
-
         private void btCancel_Click(object sender, EventArgs e)
         {
             this.Close();

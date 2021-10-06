@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace SendMail
 {
@@ -26,8 +30,29 @@ namespace SendMail
             if (instance == null)
             {
                 instance = new Settings();
+                try
+                {
+                    //逆シリアル化
+
+                    XElement xset = XElement.Load("Setting.xml");
+                    using (var reader = XmlReader.Create("Setting.xml"))
+                    {
+                        var serializer = new DataContractSerializer(typeof(Settings));
+                        var setter = serializer.ReadObject(reader) as Settings;
+                        instance = setter;
+                    }
+
+                }
+                catch (Exception)
+                {
+                    //XMLファイルがなかった場合
+                    MessageBox.Show("XMLファイルが見つかりませんでした。\n" +
+                                    "設定画面を起動します。");
+                    new ConfigForm().ShowDialog();
+                }
             }
             return instance;
+            
         }
 
         //初期値
@@ -54,6 +79,11 @@ namespace SendMail
         public string sSender()
         {
             return @"OjsInfosys01@gmail.com";
+        }
+
+        public bool bSsl()
+        {
+            return true;
         }
     }
 }
