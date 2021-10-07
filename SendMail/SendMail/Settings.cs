@@ -14,12 +14,12 @@ namespace SendMail
     {
         private static Settings instance = null;
 
-        public int Port { get; set; }       //ポート番号
-        public string Host { get; set; }    //ホスト名
-        public string MailAddr { get; set; }//メールアドレス
-        public string Pass { get; set; }    //パスワード
-        public bool Ssl { get; set; }       //SSL
-        public string Sender { get; set; }
+        public int    Port     { get; set; }    //ポート番号
+        public string Host     { get; set; }    //ホスト名
+        public string MailAddr { get; set; }    //メールアドレス
+        public string Pass     { get; set; }    //パスワード
+        public bool   Ssl      { get; set; }    //SSL
+        public string Sender   { get; set; }    
 
         //コンストラクタ
         private Settings(){}
@@ -38,8 +38,13 @@ namespace SendMail
                     using (var reader = XmlReader.Create("Setting.xml"))
                     {
                         var serializer = new DataContractSerializer(typeof(Settings));
-                        var setter = serializer.ReadObject(reader) as Settings;
-                        instance = setter;
+                        var setter     = serializer.ReadObject(reader) as Settings;
+                        instance.Host     = setter.Host;
+                        instance.MailAddr = setter.MailAddr;
+                        instance.Pass     = setter.Pass;
+                        instance.Port     = setter.Port;
+                        instance.Sender   = setter.Sender;
+                        instance.Ssl      = setter.Ssl;
                     }
 
                 }

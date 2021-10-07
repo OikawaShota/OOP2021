@@ -67,7 +67,18 @@ namespace SendMail
         }
         private void btCancel_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("設定がありません");
             this.Close();
+        }
+
+        private void ConfigForm_Load(object sender, EventArgs e)
+        {
+            tbHost.Text = st.sHost();
+            tbUserName.Text = st.sMailAddr();
+            tbPort.Text = st.sPort();
+            tbPassword.Text = st.sPass();
+            tbSender.Text = st.sSender();
+            cbSsl.Checked = true;
         }
     }
 }
