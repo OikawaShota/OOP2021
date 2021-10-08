@@ -67,8 +67,7 @@ namespace SendMail
         }
         private void btCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("設定がありません");
-            this.Close();
+            Close();
         }
 
         private void ConfigForm_Load(object sender, EventArgs e)

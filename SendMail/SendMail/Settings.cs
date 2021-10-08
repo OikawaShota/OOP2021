@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,13 +15,12 @@ namespace SendMail
     public class Settings
     {
         private static Settings instance = null;
-
         public int    Port     { get; set; }    //ポート番号
         public string Host     { get; set; }    //ホスト名
         public string MailAddr { get; set; }    //メールアドレス
         public string Pass     { get; set; }    //パスワード
         public bool   Ssl      { get; set; }    //SSL
-        public string Sender   { get; set; }    
+        public string Sender   { get; set; }
 
         //コンストラクタ
         private Settings(){}
@@ -34,7 +35,6 @@ namespace SendMail
                 {
                     //逆シリアル化
 
-                    XElement xset = XElement.Load("Setting.xml");
                     using (var reader = XmlReader.Create("Setting.xml"))
                     {
                         var serializer = new DataContractSerializer(typeof(Settings));
