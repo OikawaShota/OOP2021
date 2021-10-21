@@ -30,13 +30,13 @@ namespace SampleEntityFramework
             //Exercise13_1_1();
             
             Console.WriteLine("#1.2");
-            //Exercise13_1_2();
+            Exercise13_1_2();
             
             Console.WriteLine("#1.3");
-            //Exercise13_1_3();
+            Exercise13_1_3();
             
             Console.WriteLine("#1.4");
-            //Exercise13_1_4();
+            Exercise13_1_4();
             
             Console.WriteLine("#1.5");
             Exercise13_1_5();
@@ -156,13 +156,15 @@ namespace SampleEntityFramework
         {
             using (var db = new BooksDbContext())
             {
-                var list = db.Authors.OrderByDescending(a => a.Birthday);
-                foreach (var a in list)
+                var authors = db.Authors.OrderByDescending(a => a.Birthday).ToList();
+                foreach (var a in authors)
                 {
-                    foreach (var b in a.Books)
+                    Console.Write("{0} {1:yyyy/MM}",a.Name,a.Birthday);
+                    foreach (var b in a.Books.ToList())
                     {
-                        Console.WriteLine($"{b.Title} {b.PublishedYear}");
+                        Console.WriteLine($" {b.Title} {b.PublishedYear}");
                     }
+                    Console.WriteLine();
                 }
             }
         }
