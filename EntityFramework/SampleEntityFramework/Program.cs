@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SampleEntityFramework
 {
@@ -156,7 +154,17 @@ namespace SampleEntityFramework
 
         private static void Exercise13_1_5()
         {
-            //10/20　著者ごとにリスト化、著者をOrder by で並び替え?
+            using (var db = new BooksDbContext())
+            {
+                var list = db.Authors.OrderByDescending(a => a.Birthday);
+                foreach (var a in list)
+                {
+                    foreach (var b in a.Books)
+                    {
+                        Console.WriteLine($"{b.Title} {b.PublishedYear}");
+                    }
+                }
+            }
         }
 
 
