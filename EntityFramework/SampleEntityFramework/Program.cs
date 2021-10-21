@@ -159,7 +159,7 @@ namespace SampleEntityFramework
                 var authors = db.Authors.OrderByDescending(a => a.Birthday).ToList();
                 foreach (var a in authors)
                 {
-                    Console.Write("{0} {1:yyyy/MM}",a.Name,a.Birthday);
+                    Console.Write($" {a.Name} {a.Birthday}");
                     foreach (var b in a.Books.ToList())
                     {
                         Console.WriteLine($" {b.Title} {b.PublishedYear}");
