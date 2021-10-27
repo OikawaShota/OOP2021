@@ -32,12 +32,13 @@ namespace CarReportSystem {
             その他,
         }
 
-        public void UpDate(DateTime date, 
-                        string author, 
-                        MakerGroup maker, 
-                        string carName, 
-                        string report, 
-                        Image picture) {
+        public void UpDate(DateTime date,
+                        string author,
+                        MakerGroup maker,
+                        string carName,
+                        string report,
+                        Image picture)
+        {
             this.Date = date;
             this.Author = author;
             this.Maker = maker;
@@ -49,6 +50,4 @@ namespace CarReportSystem {
 
         }
     }
-
-    
 }
