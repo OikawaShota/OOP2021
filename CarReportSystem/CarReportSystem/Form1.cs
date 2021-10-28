@@ -151,13 +151,17 @@ namespace CarReportSystem {
         //    dgvRegistData.Refresh();
             
         }
-
-        private void btSave_Click(object sender, EventArgs e) {
+        //更新ボタンイベント処理
+        private void btUpdate_Click(object sender, EventArgs e) {
+            if (carReportDataGridView.CurrentRow == null) return;
             carReportDataGridView.CurrentRow.Cells[1].Value = dtpDate.Value;
             carReportDataGridView.CurrentRow.Cells[2].Value = cbAuthor.Text;
             carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup().ToString();
             carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;
             carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202104DataSet);
 #if false
             if (sfdFileSave.ShowDialog() == DialogResult.OK) {
                 try { 
@@ -173,7 +177,7 @@ namespace CarReportSystem {
 #endif
         }
 
-        private void btOpen_Click(object sender, EventArgs e) {
+        private void btConnect_Click(object sender, EventArgs e) {
             this.carReportTableAdapter.Fill(this.infosys202104DataSet.CarReport);
 #if false
             if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
