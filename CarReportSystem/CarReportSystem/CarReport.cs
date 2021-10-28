@@ -30,6 +30,7 @@ namespace CarReportSystem {
             スバル,
             外国車,
             その他,
+            carReportDataGridView,
         }
 
         public void UpDate(DateTime date,
