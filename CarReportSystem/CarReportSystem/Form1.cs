@@ -120,8 +120,7 @@ namespace CarReportSystem {
                 case CarReport.MakerGroup.外国車:
                     rbInport.Checked = true;
                     break;
-                case CarReport.MakerGroup.その他:
-                    rbOther.Checked = true;
+                default:
                     break;
             }
         }
@@ -180,6 +179,11 @@ namespace CarReportSystem {
 
         private void btConnect_Click(object sender, EventArgs e) {
             this.carReportTableAdapter.Fill(this.infosys202104DataSet.CarReport);
+            for (int i = 1; i < carReportDataGridView.RowCount; i++)
+            {
+                setCbAuthor(carReportDataGridView.Rows[i-1].Cells[2].Value.ToString());
+                setCbCarName(carReportDataGridView.Rows[i-1].Cells[4].Value.ToString());
+            }
 #if false
             if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
                 try { 
@@ -215,7 +219,8 @@ namespace CarReportSystem {
 
         private void fmMain_Load_1(object sender, EventArgs e)
         {
-            //dgvRegistData.Columns[5].Visible = false;
+            carReportDataGridView.Columns[0].Visible = false;
+            carReportDataGridView.Columns[1].HeaderText = "日付";
         }
 
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -225,15 +230,17 @@ namespace CarReportSystem {
             {
                 dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value;
                 cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString();
+                rbOther.Checked = true;
                 setMakerRadioButton((CarReport.MakerGroup)Enum.Parse(typeof(CarReport.MakerGroup),
                                         carReportDataGridView.CurrentRow.Cells[3].Value.ToString()));//メーカー文字列→列挙型
-
                 cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString();
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value);
             }
             catch (Exception)
             {
+                cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString();
                 pbPicture.Image  = null;
             }
 
@@ -253,5 +260,9 @@ namespace CarReportSystem {
             return b;
         }
 
+        private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
 }
