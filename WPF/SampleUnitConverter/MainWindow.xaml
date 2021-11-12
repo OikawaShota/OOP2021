@@ -11,6 +11,7 @@
     <Window.DataContext>
         <SampleUnitConverter:MainWindowViewModel/>
     </Window.DataContext>
+
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBox Width="100" Margin="4"
@@ -18,12 +19,12 @@
             <ComboBox Width="80" Margin="4"
                       ItemsSource="{Binding Source={x:Static SampleUnitConverter:MetricUnit.Units}}"
                       SelectedItem="{Binding CurrentMetricUnit}"/>
-            
+
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="40" Margin="4" Content="▲"
+            <Button Width="40" Margin="4" Content="▲" Background="{StaticResource ButtonBrushKey}"
                     Command="{Binding ImperialUnitToMetric}"/>
-            <Button Width="40" Margin="4" Content="▼"
+            <Button Width="40" Margin="4" Content="▼" Background="{StaticResource ButtonBrushKey}"
                     Command="{Binding MetricToImperialUnit}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
