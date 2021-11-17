@@ -1,13 +1,17 @@
-﻿<Window x:Class="NumberGame.MainWindow"
+﻿<Window x:Name="MainWind" x:Class="NumberGame.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberGame"
         mc:Ignorable="d"
-        Title="NumberGame" Height="560" Width="500">
-    <Grid>
-        <StackPanel Orientation="Vertical" Margin="0,0,400,29">
+        Title="NumberGame" Height="560" Width="500" Loaded="Loded">
+    <StackPanel>
+        <Grid x:Name="grid"/>
+        <TextBlock x:Name="tbAns" Height="30" FontSize="15"
+               TextWrapping="Wrap" Text="TextBlock"/>
+    </StackPanel>
+    <!--<StackPanel Orientation="Vertical" Margin="0,0,400,29">
             <Button x:Name="bt1" Content="1" Height="100" FontSize="40" Click="bt_Click"/>
             <Button x:Name="bt2" Content="2" Height="100" FontSize="40" Click="bt_Click"/>
             <Button x:Name="bt3" Content="3" Height="100" FontSize="40" Click="bt_Click"/>
@@ -42,6 +46,7 @@
             <Button x:Name="bt24" Content="24" Height="100" FontSize="40" Click="bt_Click"/>
             <Button x:Name="bt25" Content="25" Height="100" FontSize="40" Click="bt_Click"/>
         </StackPanel>
-        <TextBlock x:Name="tbAns" HorizontalAlignment="Left" Margin="10,500,0,0" TextWrapping="Wrap" Text="Next Conan's HINT" VerticalAlignment="Top" Width="268" Height="29" FontSize="20"/>
-    </Grid>
+        <TextBlock x:Name="tbAns" HorizontalAlignment="Left" Margin="10,500,0,0" TextWrapping="Wrap" Text="Next Conan's HINT" VerticalAlignment="Top" Width="268" Height="29" FontSize="20"/>-->
+
+
 </Window>
