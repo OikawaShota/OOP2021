@@ -20,22 +20,22 @@ namespace NumberGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        Random ans = new Random();
+        static Random ans = new Random();
+        int a = int.Parse(ans.Next(1, 25).ToString());
         public MainWindow()
         {
             InitializeComponent();
-            int a=int.Parse(ans.Next(1, 25).ToString());
         }
 
         public void Anser(int number)
         {
-            if (number==a)
+            if (number== a)
             {
                 tbAns.Text = ("正解!");
             }
             else
             {
-                if(number.Equals(ans))
+                if(number>a)
                 {
                     tbAns.Text = ("この数値より少ないです。");
                 }
