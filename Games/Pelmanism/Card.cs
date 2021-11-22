@@ -21,7 +21,7 @@ namespace Pelmanism
         //カード表面の色
         public Color OpenColor { get; } = Color.White;
         //カード裏面の色
-        public Color CloseColor { get; } = Color.LightSeaGreen;
+        public Color CloseColor { get; } = Color.Black;
 
         public Card(string picture)
         {
@@ -46,8 +46,8 @@ namespace Pelmanism
         //カードをクローズする
         public void Close()
         {
-            State = true;   //表
-            BackColor = OpenColor;
+            State = false;   //表
+            BackColor = CloseColor;
             Text = "";
             Enabled = true; //選択不可
         }
